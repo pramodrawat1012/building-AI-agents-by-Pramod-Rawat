@@ -1,159 +1,27 @@
-# UV: The Fast Python Package Manager
+# Introduction
 
-UV is a Rust-based "Cargo for Python" that replaces pip, pip-tools, pipx, poetry, pyenv, and virtualenv with a single tool. Written by Astral (creators of Ruff), it delivers **10-100x performance improvements** - think TensorFlow installs in 25 seconds instead of 3 minutes.
+This Cookbook contains examples and tutorials to help developers build AI systems, offering copy/paste code snippets that you can easily integrate into your own projects.
 
-**Installation:** [Download and install UV here](https://docs.astral.sh/uv/getting-started/installation/)
+## About Me
 
-## Why developers are switching
+Hi! I'm Dave, AI Engineer and founder of Datalumina®. On my [YouTube channel](https://www.youtube.com/@daveebbelaar?sub_confirmation=1), I share practical tutorials that teach developers how to build AI systems that actually work in the real world. Beyond these tutorials, I also help people start successful freelancing careers. Check out the links below to learn more!
 
-- **Speed**: CI/CD pipelines drop from 25+ minutes to seconds
-- **Simplicity**: No more juggling multiple tools or activating venvs
-- **Modern**: Built-in Python version management and dependency groups
-- **Compatible**: Works with existing pip/poetry workflows
+### Explore More Resources
 
-But beyond all that, it makes working with Python much more enjoyable. I've been working with Python for over 10 years, and setting up a new project, managing dependencies, and getting everything to work has always been one of my least favorite parts of this programming language. UV solves all of that. This guide will cover the basics that everyone needs to know. You can find the [official documentation here](https://docs.astral.sh/uv/getting-started/) to learn more about specific use cases.
+Whether you're a learner, a freelancer, or a business looking for AI expertise, we've got something for you:
 
-## About Astral and Ruff
+1. **Learning Python for AI and Data Science?**  
+   Join our **free community, Data Alchemy**, where you'll find resources, tutorials, and support  
+   ▶︎ [Learn Python for AI](https://www.skool.com/data-alchemy)
 
-UV comes from [Astral](https://astral.sh/), the same team behind [Ruff](https://docs.astral.sh/ruff/) - the extremely fast Python linter and formatter that I highly recommend to everyone. Like UV, Ruff is written in Rust and delivers massive performance improvements (100x faster than flake8). If you're not using Ruff yet, you should be - it replaces flake8, isort, black, and more with a single blazingly fast tool.
+2. **Ready to start or scale your freelancing career?**  
+   Learn how to land clients and grow your business  
+   ▶︎ [Find freelance projects](https://www.datalumina.com/data-freelancer)
 
-## Most common real-world workflows
+3. **Need expert help on your next project?**  
+   Work with me and my team to solve your data and AI challenges  
+   ▶︎ [Work with me](https://www.datalumina.com/solutions)
 
-## Starting a new Python project
-
-Create a new project:
-
-```bash
-uv init my-ai-app
-cd my-ai-app
-```
-
-Project structure:
-
-```
-my-web-app/
-├── .gitignore
-├── .python-version    # Pins Python version
-├── README.md
-├── hello.py
-└── pyproject.toml     # Modern Python packaging
-```
-
-Add dependencies and run:
-
-```bash
-uv add openai fastapi
-uv run hello.py
-```
-
-UV automatically creates the venv, installs dependencies, and generates `uv.lock` for reproducible builds.
-
-## Working with existing projects
-
-Clone and sync:
-
-```bash
-git clone https://github.com/org/project.git
-cd project
-uv sync
-```
-
-`uv sync` creates the venv and installs exact versions from `uv.lock` for identical team setups.
-
-Production deployments (exclude dev dependencies):
-
-```bash
-uv sync --no-dev
-```
-
-## Python version management
-
-Built-in Python version management (replaces pyenv):
-
-```bash
-# Install Python versions
-uv python install 3.12
-uv python install 3.11 3.12 3.13  # Multiple at once
-
-# Pin project to specific version
-uv python pin 3.12  # Creates .python-version
-
-# List available versions
-uv python list
-```
-
-**Automatic Python installation**: UV installs missing Python versions during `uv sync`.
-
-## Development vs production dependencies
-
-UV uses modern dependency groups following PEP 735:
-
-```toml
-[project]
-name = "my-app"
-dependencies = [
-    "fastapi>=0.100.0",
-    "sqlalchemy>=2.0.0",
-]
-
-[dependency-groups]
-dev = [
-    "pytest>=7.4.0",
-    "black>=23.0.0",
-]
-```
-
-Managing dependency groups:
-
-```bash
-uv add --dev pytest black        # Add to dev group
-uv sync                          # Install everything
-uv sync --no-dev                 # Production only
-```
-
-## Essential commands
-
-Most common UV commands:
-
-```bash
-# Project setup
-uv init myproject           # Create new project
-uv add requests             # Add dependency
-uv remove requests             # Remove dependency
-uv sync                     # Install from lockfile
-
-# Running code
-uv run script.py    # Run in project environment
-uv run pytest              # Run tests
-
-# Python management
-uv python install 3.12     # Install Python version
-uv python pin 3.12         # Set project Python
-
-# Tool usage
-uvx black .                # Run tool temporarily
-uv tool install ruff       # Install tool globally
-
-# Package management (pip-compatible)
-uv pip install requests  # Direct pip replacement
-uv pip install -r requirements.txt
-```
-
-## New project flow
-
-```bash
-uv init my-project
-cd my-project
-cursor .
-
-uv add openai python-dotenv fastapi
-uv add --dev ipykernel
-echo "API_KEY=your-key" > .env
-
-git init
-git add .
-git commit -m "Initial commit"
-
-# Create new repo with GitHub CLI
-gh repo create my-project --private --source=. --remote=origin --push
-```
+4. **Already building AI applications?**  
+   Explore the **GenAI Launchpad**, our production framework for AI systems  
+   ▶︎ [Explore the GenAI Launchpad](https://launchpad.datalumina.com/)
